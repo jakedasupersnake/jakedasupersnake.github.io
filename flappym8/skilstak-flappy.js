@@ -22,7 +22,7 @@ var CONFIG = {
         "velocity": -420,
         "frame": 0,
         "rotate": -40,
-        "norotate": true
+        "norotate": false
       },
       "end": {
         "offset": 100,
@@ -96436,7 +96436,7 @@ PIXI.TextureSilentFail = true;
 'use strict';
 
 var Flapper = function(game) {
-  this.config = CONFIG; 
+  this.config = game.cache.getJSON('config');
   Phaser.Sprite.call(this, game, this.config.flappy.x, game.world.centerY, 'flappy',1);
   this.smoothed = false;
   this.checkWorldBounds = true;
@@ -96488,7 +96488,7 @@ Flapper.prototype.update = function () {
 
 
 var Pipe = function (game, x, y, parent, offset, space) {
-  this.config = CONFIG;
+  this.config = game.cache.getJSON('config');
   Phaser.Group.call(this, game, parent);
 
   this.speed = this.config.pipe.speed || 120;
